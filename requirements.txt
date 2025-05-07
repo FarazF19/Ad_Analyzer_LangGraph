@@ -1,0 +1,7 @@
+ipykernel
+python-dotenv
+langchain
+langchain_community
+langgraph
+cassio 
+ 
