@@ -4,4 +4,8 @@ langchain
 langchain_community
 langgraph
 cassio 
+langchain_groq
+langchainhub
+tiktoken
+langchain_huggingface
  
