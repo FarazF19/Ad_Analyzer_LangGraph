@@ -8,4 +8,9 @@ langchain_groq
 langchainhub
 tiktoken
 langchain_huggingface
- 
+openai 
+requests 
+opencv-python 
+pillow 
+numpy
+langchain_openai
