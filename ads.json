@@ -1,0 +1,1537 @@
+[
+  {
+    "id": "120220464100110658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120220464099840658",
+      "name": "Outlet shelf"
+    },
+    "adset": {
+      "id": "120220464100100658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 18,
+        "age_range": [
+          25,
+          65
+        ],
+        "genders": [
+          1
+        ],
+        "geo_locations": {
+          "countries": [
+            "PK"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_automation": {
+          "advantage_audience": 1
+        }
+      }
+    },
+    "creative": {
+      "id": "1228044408674347",
+      "video_id": "984863060455500",
+      "effective_object_story_id": "343922328805888_122173169240360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426",
+        "video_data": {
+          "video_id": "1172200667970963",
+          "title": "Cash refund if not satisfied",
+          "message": "100% Pure White Oud by Oud-al-Abraj\n\nOrder from original website: https://oudalabraj.pk/products/white-oud-attar\n\nAlways make sure to order from only\n1) Blue tick verified page\n2) Official website https://oudalabraj.pk",
+          "link_description": "Premium Wooden Packaging for Free",
+          "call_to_action": {
+            "type": "ORDER_NOW",
+            "value": {
+              "link": "https://oudalabraj.pk/products/white-oud-attar"
+            }
+          },
+          "image_url": "https://www.facebook.com/ads/image/?d=AQKO8OwCzk7Kz2-lEWKKDvVBDsWaG4rVIm9TAVLdK6OAkBv6IjHg_pwF9Qj-G1i-TSlzXMgpwRdTfGXT_YUkFvoRrXUgUnXk2bu1F5bPYxC1J2cmT66slQOrGzIfSGYU9KTA9vYNfQ6UJH7iT46lkqCY",
+          "image_hash": "634ad64b59f456522cd6d46a5bc0db1d"
+        }
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120210674167110658",
+    "name": "Advantage+ shopping campaign 03/09/2024 Ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120210674167120658",
+      "name": "White Oud Podcast + Adv shopping Campaign"
+    },
+    "adset": {
+      "id": "120210674167100658",
+      "name": "White Oud Podcast + Adv shopping Ad Set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 18,
+        "geo_locations": {
+          "countries": [
+            "PK"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "targeting_automation": {
+          "advantage_audience": 1
+        }
+      }
+    },
+    "creative": {
+      "id": "120210675008770658",
+      "effective_object_story_id": "343922328805888_122134628462360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426"
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120213260868630658",
+    "name": "Advantage+ shopping campaign 25/12/2024 Ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120213260868620658",
+      "name": "White Oud New Campaign"
+    },
+    "adset": {
+      "id": "120213260868610658",
+      "name": "White Oud New Ad Set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 18,
+        "geo_locations": {
+          "countries": [
+            "PK"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "targeting_automation": {
+          "advantage_audience": 1
+        }
+      }
+    },
+    "creative": {
+      "id": "120213260954310658",
+      "video_id": "508913428193850",
+      "effective_object_story_id": "343922328805888_122153845436360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426",
+        "video_data": {
+          "video_id": "608647558292677",
+          "title": "Pasand na aye to paisay wapis",
+          "message": "20 say 24 ghantay ki lasting",
+          "link_description": "\u062e\u0648\u0628\u0635\u0648\u0631\u062a \u0644\u06a9\u0691\u06cc \u06a9\u06cc \u067e\u06cc\u06a9\u06cc\u062c\u0646\u06af",
+          "call_to_action": {
+            "type": "LEARN_MORE",
+            "value": {
+              "link": "https://oudalabraj.pk/products/white-oud-attar"
+            }
+          },
+          "image_url": "https://www.facebook.com/ads/image/?d=AQIJw_VaGUq77YBXbRci7Tceowj7-LqD9X8B7GO2AJq5pFFXy2rRfaKs4oLNWKYjXSN8-ju6w-PhJb2QeEoFM--5KGh3BvXtVQiW8X9TewT1rQn0xLquQ-OEbr1vG1qXKMGZp6N3m38-jI0legaH5suq",
+          "image_hash": "9c580a8d40c45497796df128222fd49a"
+        }
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120216952082590658",
+    "name": "Outlet room",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120216437159120658",
+      "name": "White Oud Outlet"
+    },
+    "adset": {
+      "id": "120216437159130658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 24,
+        "age_range": [
+          24,
+          65
+        ],
+        "geo_locations": {
+          "countries": [
+            "PK"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_automation": {
+          "advantage_audience": 1
+        }
+      }
+    },
+    "creative": {
+      "id": "4079042032382633",
+      "effective_object_story_id": "343922328805888_122168300582360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426"
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120216437159140658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120216437159120658",
+      "name": "White Oud Outlet"
+    },
+    "adset": {
+      "id": "120216437159130658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 24,
+        "age_range": [
+          24,
+          65
+        ],
+        "geo_locations": {
+          "countries": [
+            "PK"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_automation": {
+          "advantage_audience": 1
+        }
+      }
+    },
+    "creative": {
+      "id": "653101890573294",
+      "effective_object_story_id": "343922328805888_122167056158360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426"
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120212229874170658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120212229874130658",
+      "name": "Quran Gift Set"
+    },
+    "adset": {
+      "id": "120212229874160658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 18,
+        "geo_locations": {
+          "cities": [
+            {
+              "country": "PK",
+              "distance_unit": "mile",
+              "key": "1800796",
+              "name": "Karachi",
+              "region": "Sindh",
+              "region_id": "2940"
+            }
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_automation": {
+          "advantage_audience": 1,
+          "individual_setting": {
+            "geo": 1
+          }
+        }
+      }
+    },
+    "creative": {
+      "id": "120212230223770658",
+      "video_id": "595030359622458",
+      "effective_object_story_id": "343922328805888_122146492454360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426",
+        "video_data": {
+          "video_id": "1348112286151509",
+          "title": "Gift jo zindagi bhar yaad rahe \u2764\ufe0f\u2764\ufe0f\u2764\ufe0f",
+          "message": "Aisa tohfa jo zindagi bhar yaad rahe \u2764\ufe0f\u2764\ufe0f\u2764\ufe0f\n\nIntroducing Premium Quran Gift Set:\n\n1) Scented Quran Shareef \n2) 2 x Original Attars (White Oud + Al Barq)\n3) Handcrafted Aqeeq Tasbeeh\n4) Royal Gold Box\n\nShop now: https://oudalabraj.pk/products/premium-quran-gift-set\n\nLimited stock.",
+          "link_description": "Extremely premium gift set",
+          "call_to_action": {
+            "type": "ORDER_NOW",
+            "value": {
+              "link": "https://oudalabraj.pk/products/premium-quran-gift-set"
+            }
+          },
+          "image_url": "https://www.facebook.com/ads/image/?d=AQJ_r4z23J9_X8Fi7fat4HSEvjBvqbibOTWpVFO7qs_CudfATN4fkhhaox5dwL7i3aEzpfDeL0-emAN-gWFNhSzfdvcD3WbUab8XuO-Zweo8g_yCjR_tOU3h-kW2UeY7FnZzFQgMs8JgbQkoJTrTJJto",
+          "image_hash": "193ed3560cbb2d8796fe649b3ab862c8"
+        }
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120213151648090658",
+    "name": "New Sales ad set",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120213151535570658",
+      "name": "New Sales ad set"
+    },
+    "adset": {
+      "id": "120213151535580658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 18,
+        "excluded_geo_locations": {
+          "countries": [
+            "SG",
+            "TW",
+            "VN"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003359668260",
+                "name": "Ads"
+              },
+              {
+                "id": "6003526234370",
+                "name": "Online advertising (marketing)"
+              },
+              {
+                "id": "6003584163107",
+                "name": "Advertising (marketing)"
+              }
+            ],
+            "work_employers": [
+              {
+                "id": "189463268145947",
+                "name": "Google for Publishers"
+              },
+              {
+                "id": "54905507170",
+                "name": "Google Ads"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "country_groups": [
+            "worldwide"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD"
+        ],
+        "publisher_platforms": [
+          "facebook"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "search"
+        ],
+        "device_platforms": [
+          "desktop"
+        ]
+      }
+    },
+    "creative": {
+      "id": "120213151785590658",
+      "effective_object_story_id": "530831830104650_122107922930665071",
+      "object_story_spec": {
+        "page_id": "530831830104650",
+        "link_data": {
+          "link": "https://softs-download.com/normal_file/?t=Capcut",
+          "attachment_style": "link",
+          "image_hash": "2d81bfd1a630f3433633f5cabd3a5b91",
+          "call_to_action": {
+            "type": "LEARN_MORE"
+          }
+        }
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120213151778280658",
+    "name": "New Sales ad set - Copy",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120213151535570658",
+      "name": "New Sales ad set"
+    },
+    "adset": {
+      "id": "120213151535580658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 18,
+        "excluded_geo_locations": {
+          "countries": [
+            "SG",
+            "TW",
+            "VN"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003359668260",
+                "name": "Ads"
+              },
+              {
+                "id": "6003526234370",
+                "name": "Online advertising (marketing)"
+              },
+              {
+                "id": "6003584163107",
+                "name": "Advertising (marketing)"
+              }
+            ],
+            "work_employers": [
+              {
+                "id": "189463268145947",
+                "name": "Google for Publishers"
+              },
+              {
+                "id": "54905507170",
+                "name": "Google Ads"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "country_groups": [
+            "worldwide"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD"
+        ],
+        "publisher_platforms": [
+          "facebook"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "search"
+        ],
+        "device_platforms": [
+          "desktop"
+        ]
+      }
+    },
+    "creative": {
+      "id": "120213151785710658",
+      "effective_object_story_id": "530831830104650_122107922942665071",
+      "object_story_spec": {
+        "page_id": "530831830104650",
+        "link_data": {
+          "link": "https://softs-download.com/normal_file/?t=Capcut",
+          "attachment_style": "link",
+          "image_hash": "50a5276a294f436add3379e4b8a83cd9",
+          "call_to_action": {
+            "type": "LEARN_MORE"
+          }
+        }
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120211956018020658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120211956017000658",
+      "name": "White Oud - Agency Ad me"
+    },
+    "adset": {
+      "id": "120211956017370658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 18,
+        "geo_locations": {
+          "countries": [
+            "PK"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_automation": {
+          "advantage_audience": 1
+        }
+      }
+    },
+    "creative": {
+      "id": "120211956171290658",
+      "effective_object_story_id": "343922328805888_122144426156360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426"
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120211059432460658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120211059431630658",
+      "name": "White Oud Reel"
+    },
+    "adset": {
+      "id": "120211059431750658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 24,
+        "geo_locations": {
+          "countries": [
+            "PK"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "targeting_automation": {
+          "advantage_audience": 1
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "facebook_reels",
+          "story"
+        ],
+        "instagram_positions": [
+          "profile_reels",
+          "story",
+          "reels"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "story"
+        ]
+      }
+    },
+    "creative": {
+      "id": "120211059500700658",
+      "video_id": "922717369711204",
+      "effective_object_story_id": "343922328805888_122137819130360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426",
+        "video_data": {
+          "video_id": "891302119580101",
+          "title": "#1 White Oud Attar",
+          "message": "100% Original White Oud Attar\n\nFull money back guarantee\n\nOrder Now: https://oudalabraj.pk/products/white-oud-attar",
+          "call_to_action": {
+            "type": "ORDER_NOW",
+            "value": {
+              "link": "https://oudalabraj.pk/products/white-oud-attar"
+            }
+          },
+          "image_url": "https://www.facebook.com/ads/image/?d=AQJ26cAx9-JdwL6ktLwZ1N2NOsWk_8hJ8CO2Jf9BBOfnKS75a-IlHuJt7Z0V2JHgs4vWARmf8WYUCj_weC-W4QzaQgq8XXMg2VjZNz5Iks_OCEuVv9HttzOCMNRFaOnLtVq4ETCSSpneHO2pRbeJ0nLD",
+          "image_hash": "84f95ddde59cc61e6228e5deb16ce4b2"
+        }
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120210985751030658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120210985749770658",
+      "name": "White Oud Bottles 2"
+    },
+    "adset": {
+      "id": "120210985750860658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 18,
+        "geo_locations": {
+          "countries": [
+            "PK"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "targeting_automation": {
+          "advantage_audience": 1
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram"
+        ],
+        "facebook_positions": [
+          "feed",
+          "facebook_reels",
+          "profile_feed",
+          "right_hand_column",
+          "video_feeds",
+          "marketplace",
+          "story",
+          "search"
+        ],
+        "instagram_positions": [
+          "stream",
+          "ig_search",
+          "profile_reels",
+          "story",
+          "explore",
+          "reels",
+          "explore_home",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ]
+      }
+    },
+    "creative": {
+      "id": "120210985978540658",
+      "effective_object_story_id": "343922328805888_122137195346360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426"
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120210543860320658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120210543860010658",
+      "name": "White Oud Container 2"
+    },
+    "adset": {
+      "id": "120210543860050658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 25,
+        "geo_locations": {
+          "countries": [
+            "PK"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "targeting_automation": {
+          "advantage_audience": 1
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram"
+        ],
+        "facebook_positions": [
+          "feed",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ]
+      }
+    },
+    "creative": {
+      "id": "120210544092320658",
+      "video_id": "1763908037747836",
+      "effective_object_story_id": "343922328805888_1763908037747836",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426",
+        "video_data": {
+          "video_id": "1211388629901426",
+          "title": "safe refund policy",
+          "message": "Pakistan's #1 White Oud Attar by Oud Al Abraj\n\nRs 200 Flat Discount\n\nOrder Now at: https://oudalabraj.pk/products/white-oud-attar\n\nMoney back refund policy",
+          "link_description": "Free gift packing",
+          "call_to_action": {
+            "type": "ORDER_NOW",
+            "value": {
+              "link": "https://oudalabraj.pk/products/white-oud-attar"
+            }
+          },
+          "image_url": "https://www.facebook.com/ads/image/?d=AQJOcHzJuV1CfvGJ_y32RKC-EvEG-ZFwtlXONlDx8eGo78yUpRHSmB04rIFHkRDQgfDkwP43PNl1IlsPHbTbYgjelLYphyBE_-EyBQ15mkahIRE4aDifg2M8nf9_aFD1vhEh-qGU_MKnaKk4S063XVwg",
+          "image_hash": "721a5205a0a173a0783c67ab9b28ad69"
+        }
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120210513549010658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120210513548820658",
+      "name": "Container"
+    },
+    "adset": {
+      "id": "120210513548990658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 24,
+        "geo_locations": {
+          "countries": [
+            "PK"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "targeting_automation": {
+          "advantage_audience": 1
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram"
+        ],
+        "facebook_positions": [
+          "feed",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ]
+      }
+    },
+    "creative": {
+      "id": "120210513811140658",
+      "video_id": "1939163413192839",
+      "effective_object_story_id": "343922328805888_122133225980360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426",
+        "video_data": {
+          "video_id": "549493960985578",
+          "title": "Pasand na aaye to paisay wapis",
+          "message": "Pakistan's #1 White Oud Attar by Oud Al Abraj\n\nRs 200 discount right now.\n\nOrder Now at: https://oudalabraj.pk/products/white-oud-attar\n\nFree gift wood engraved packing",
+          "link_description": "Long lasting or get refund",
+          "call_to_action": {
+            "type": "ORDER_NOW",
+            "value": {
+              "link": "https://oudalabraj.pk/products/white-oud-attar"
+            }
+          },
+          "image_url": "https://www.facebook.com/ads/image/?d=AQLixvKrnVPnw-MUMrmaZkQlRzVnA_T0Bk09dMcf8uOGez4UaZSTpK8Lya5YHrrmUeTzJQXOE4NevrxyglPTo8eRVqveWPaT1SqLXzOKyHvDjcGI2dxfogZnaC0Gart6zx_InbPXVLQSY5zq3XDYKnuC",
+          "image_hash": "b0693d028e9b71d694ae5ffd080fa765"
+        }
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120210351133010658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120210351132970658",
+      "name": "Tasbeeh Hand Polish"
+    },
+    "adset": {
+      "id": "120210351132990658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 24,
+        "geo_locations": {
+          "countries": [
+            "PK"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "targeting_automation": {
+          "advantage_audience": 1
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram"
+        ],
+        "facebook_positions": [
+          "feed",
+          "profile_feed",
+          "video_feeds"
+        ],
+        "instagram_positions": [
+          "stream",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ]
+      }
+    },
+    "creative": {
+      "id": "120210351224950658",
+      "video_id": "1896966397480117",
+      "effective_object_story_id": "343922328805888_1896966397480117",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426",
+        "video_data": {
+          "video_id": "1753393092070023",
+          "title": "Pasand na aye to paisay wapis",
+          "message": "Beautiful Original Chandi Tasbeeh with Gift Package",
+          "link_description": "Rs 1000 discount",
+          "call_to_action": {
+            "type": "ORDER_NOW",
+            "value": {
+              "link": "https://oudalabraj.pk/products/italian-style-silver-tasbeeh-chandni"
+            }
+          },
+          "image_url": "https://www.facebook.com/ads/image/?d=AQKVcMwAnKktOlXH861IvjjD71NoCTK0aPPuZcbo7MTOZNLnUe0mN1kMm5irPG7-rhgua9g8v3nzyQIwKz1C9WPDHDv12w6CHhGM0yt1Hg9wQQGMVwV4ZDzEVrpsoevxXHAp7YtTYYQaB_6sBya4lLfz",
+          "image_hash": "cfbc8adc621eecd3886285df4b5734ee"
+        }
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120210339521070658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120210339520810658",
+      "name": "Silvet Tasbeeh with nasheed"
+    },
+    "adset": {
+      "id": "120210339521050658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 24,
+        "geo_locations": {
+          "cities": [
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1796082",
+              "name": "Islamabad",
+              "radius": 40,
+              "region": "Punjab",
+              "region_id": "2939"
+            },
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1800796",
+              "name": "Karachi",
+              "radius": 40,
+              "region": "Sindh",
+              "region_id": "2940"
+            },
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1807162",
+              "name": "Lahore",
+              "radius": 40,
+              "region": "Punjab",
+              "region_id": "2939"
+            },
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1822222",
+              "name": "Rawalpindi",
+              "radius": 40,
+              "region": "Punjab",
+              "region_id": "2939"
+            }
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "targeting_automation": {
+          "advantage_audience": 1
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram"
+        ],
+        "facebook_positions": [
+          "feed",
+          "profile_feed",
+          "right_hand_column",
+          "video_feeds",
+          "marketplace"
+        ],
+        "instagram_positions": [
+          "stream",
+          "explore",
+          "explore_home",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ]
+      }
+    },
+    "creative": {
+      "id": "120210339614210658",
+      "effective_object_story_id": "343922328805888_122131463570360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426"
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120210339062640658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120210339061870658",
+      "name": "Chandi Tasbeeh Vertical"
+    },
+    "adset": {
+      "id": "120210339062300658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 24,
+        "geo_locations": {
+          "cities": [
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1796082",
+              "name": "Islamabad",
+              "radius": 40,
+              "region": "Punjab",
+              "region_id": "2939"
+            },
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1800796",
+              "name": "Karachi",
+              "radius": 40,
+              "region": "Sindh",
+              "region_id": "2940"
+            },
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1807162",
+              "name": "Lahore",
+              "radius": 40,
+              "region": "Punjab",
+              "region_id": "2939"
+            },
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1822222",
+              "name": "Rawalpindi",
+              "radius": 40,
+              "region": "Punjab",
+              "region_id": "2939"
+            }
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD"
+        ],
+        "targeting_automation": {
+          "advantage_audience": 1
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram"
+        ],
+        "facebook_positions": [
+          "feed",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed",
+          "video_feeds",
+          "instream_video",
+          "story"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ]
+      }
+    },
+    "creative": {
+      "id": "120210339468590658",
+      "video_id": "901887658436290",
+      "effective_object_story_id": "343922328805888_122131459100360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426",
+        "video_data": {
+          "video_id": "2618257885027037",
+          "title": "Rs 500 Discount + 500 Wood packing free",
+          "message": "Original Chandi Tasbeeh at Rs 500 discount",
+          "link_description": "Money back guarantee",
+          "call_to_action": {
+            "type": "ORDER_NOW",
+            "value": {
+              "link": "https://oudalabraj.pk/products/italian-style-silver-tasbeeh-chandni"
+            }
+          },
+          "image_url": "https://www.facebook.com/ads/image/?d=AQLZGKsg2ZwDAM126hlMUzGqnWDxdkc0dDCVC1lF8OgSecgsbVjoZgVR6tWkWWDUzkuev9KZxm4-XZQKLVyHWfK7shlS0WRaWkPTI3Ucu_xmaL7rZ-x_mb3vQTweIiRwtaPCOxv_pBSINTn-3nhDCi3j",
+          "image_hash": "aee8b58c3be732e6329b1747782203af"
+        }
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120210266744990658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120210266744950658",
+      "name": "Chandi Tasbeeh"
+    },
+    "adset": {
+      "id": "120210266744960658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 24,
+        "geo_locations": {
+          "countries": [
+            "PK"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "targeting_automation": {
+          "advantage_audience": 1
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram"
+        ],
+        "facebook_positions": [
+          "feed",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ]
+      }
+    },
+    "creative": {
+      "id": "120210267183000658",
+      "video_id": "1211895429838078",
+      "effective_object_story_id": "343922328805888_122130818396360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426",
+        "video_data": {
+          "video_id": "906752448323827",
+          "title": "925 Silver Sterling Tasbeeh",
+          "message": "Original Chandi Tasbeeh\n\nOrder here: https://oudalabraj.pk/products/italian-style-silver-tasbeeh-chandni",
+          "link_description": "Rs 500 Gift Packing for free",
+          "call_to_action": {
+            "type": "ORDER_NOW",
+            "value": {
+              "link": "https://oudalabraj.pk/products/italian-style-silver-tasbeeh-chandni"
+            }
+          },
+          "image_url": "https://www.facebook.com/ads/image/?d=AQLCAUOknwvrknF09qEZqC31qfxEVQspeXahiYKJvF7DtzVOYeRcXiFJH8HlnO01Xb5dIhi4L_z5dCIRZHIUdxr0a5WfYqHlUfprimpt8wpAciOvTBHgoyCz4fgBjKHMgYSlaKNbSINZN8AUOEQVtLwb",
+          "image_hash": "89ad5d6061b23e8b12bc73b9d74674ef"
+        }
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120210246979960658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120210246979870658",
+      "name": "Chandni Tasbeeh"
+    },
+    "adset": {
+      "id": "120210246979920658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 24,
+        "geo_locations": {
+          "countries": [
+            "PK"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "targeting_automation": {
+          "advantage_audience": 1
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram"
+        ],
+        "facebook_positions": [
+          "feed",
+          "profile_feed",
+          "right_hand_column",
+          "video_feeds"
+        ],
+        "instagram_positions": [
+          "stream",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ]
+      }
+    },
+    "creative": {
+      "id": "120210247318260658",
+      "effective_object_story_id": "343922328805888_122130639026360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426"
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120209327782550658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120209327782490658",
+      "name": "Prince comparison to perfume"
+    },
+    "adset": {
+      "id": "120209327782500658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 24,
+        "geo_locations": {
+          "cities": [
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1796082",
+              "name": "Islamabad",
+              "radius": 40,
+              "region": "Punjab",
+              "region_id": "2939"
+            },
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1800796",
+              "name": "Karachi",
+              "radius": 40,
+              "region": "Sindh",
+              "region_id": "2940"
+            },
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1807162",
+              "name": "Lahore",
+              "radius": 40,
+              "region": "Punjab",
+              "region_id": "2939"
+            },
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1822222",
+              "name": "Rawalpindi",
+              "radius": 40,
+              "region": "Punjab",
+              "region_id": "2939"
+            }
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "targeting_automation": {
+          "advantage_audience": 1
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "facebook_reels",
+          "profile_feed",
+          "video_feeds",
+          "marketplace",
+          "story",
+          "search"
+        ],
+        "instagram_positions": [
+          "stream",
+          "ig_search",
+          "story",
+          "explore",
+          "reels",
+          "explore_home",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "messenger_home",
+          "story"
+        ]
+      }
+    },
+    "creative": {
+      "id": "120209327970090658",
+      "video_id": "1406930179976980",
+      "effective_object_story_id": "343922328805888_122117947520360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426",
+        "video_data": {
+          "video_id": "820100763399646",
+          "title": "Long Lasting or get refund",
+          "message": "100% Alcohol Free Long lasting French Attar\n\nOriginal Price: Rs 2,200\nDiscounted Price: Rs 1,899\n\nOrder now at: https://oudalabraj.pk/products/print-attar\n\nGet full refund or exchange if not up to the mark within 14 days.",
+          "link_description": "Wood packing included",
+          "call_to_action": {
+            "type": "ORDER_NOW",
+            "value": {
+              "link_caption": "https://oudalabraj.pk/",
+              "link": "https://oudalabraj.pk/products/print-attar"
+            }
+          },
+          "image_url": "https://www.facebook.com/ads/image/?d=AQJH33_mA3CYDji-q6_O6F9cM6a21QqWE43-FzDizO1yMGqoXnR3e_4IJh0vW7HJEAPmqvQ1j7plKvHYG8FAsfLtUIHO-7ojNHGa5TSHG1QUTyMUHnexL27LOjuz_eD3Zslxb73pUwUIPxkictfvV7Vt",
+          "image_hash": "639a02997c45394f6d03b7d7cb555b29"
+        }
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120209304266660658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120209304266460658",
+      "name": "Projection"
+    },
+    "adset": {
+      "id": "120209304266620658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 24,
+        "geo_locations": {
+          "cities": [
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1796082",
+              "name": "Islamabad",
+              "radius": 40,
+              "region": "Punjab",
+              "region_id": "2939"
+            },
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1800796",
+              "name": "Karachi",
+              "radius": 40,
+              "region": "Sindh",
+              "region_id": "2940"
+            },
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1807162",
+              "name": "Lahore",
+              "radius": 40,
+              "region": "Punjab",
+              "region_id": "2939"
+            },
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1822222",
+              "name": "Rawalpindi",
+              "radius": 40,
+              "region": "Punjab",
+              "region_id": "2939"
+            }
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_automation": {
+          "advantage_audience": 1
+        }
+      }
+    },
+    "creative": {
+      "id": "120209304362360658",
+      "video_id": "4033088160244310",
+      "effective_object_story_id": "343922328805888_122117545178360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426",
+        "video_data": {
+          "video_id": "515941644111475",
+          "title": "White OUD alcohol free",
+          "message": "Poray kamray ko khushbu say fill karay ga within 1 minute.\n\nOrder Now: https://oudalabraj.pk/products/white-oud-attar",
+          "link_description": "Free gift packaging",
+          "call_to_action": {
+            "type": "ORDER_NOW",
+            "value": {
+              "link_caption": "https://oudalabraj.pk/",
+              "link": "https://oudalabraj.pk/products/white-oud-attar"
+            }
+          },
+          "image_url": "https://www.facebook.com/ads/image/?d=AQKYTZokFUi0bvsa9rEIb8zCpxGAghqD7SoYTZIHb_2e5swBrut7vL2UJmLi1J5_p_F8GnkvBiSF9X88zcIxcn_Rcoj0xSOkLsnVJpwSAyliGXJPci3CNrIMlHeS-g0kCnH2iKo47FR6cYdG1YOh9vaY",
+          "image_hash": "aea422ef084fb2703ca1d5ebbd2c8d71"
+        }
+      }
+    },
+    "status": "ACTIVE"
+  },
+  {
+    "id": "120209303712660658",
+    "name": "New Sales ad",
+    "ad_active_time": "0",
+    "campaign": {
+      "id": "120209303712540658",
+      "name": "White Oud TV"
+    },
+    "adset": {
+      "id": "120209303712620658",
+      "name": "New Sales ad set",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 24,
+        "geo_locations": {
+          "cities": [
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1796082",
+              "name": "Islamabad",
+              "radius": 40,
+              "region": "Punjab",
+              "region_id": "2939"
+            },
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1800796",
+              "name": "Karachi",
+              "radius": 40,
+              "region": "Sindh",
+              "region_id": "2940"
+            },
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1807162",
+              "name": "Lahore",
+              "radius": 40,
+              "region": "Punjab",
+              "region_id": "2939"
+            },
+            {
+              "country": "PK",
+              "distance_unit": "kilometer",
+              "key": "1822222",
+              "name": "Rawalpindi",
+              "radius": 40,
+              "region": "Punjab",
+              "region_id": "2939"
+            }
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_automation": {
+          "advantage_audience": 1
+        }
+      }
+    },
+    "creative": {
+      "id": "120209304259710658",
+      "video_id": "1204310453903113",
+      "effective_object_story_id": "343922328805888_122117540876360940",
+      "object_story_spec": {
+        "page_id": "343922328805888",
+        "instagram_user_id": "17841467669984426",
+        "video_data": {
+          "video_id": "768753755422277",
+          "title": "Long lasting or get refund",
+          "message": "12-24 hours lasting 100% alcohol free White Oud Attar.\n\nGet with wood packaging at only Rs 2099",
+          "link_description": "Comes with wood packaging",
+          "call_to_action": {
+            "type": "ORDER_NOW",
+            "value": {
+              "link_caption": "https://oudalabraj.pk",
+              "link": "https://oudalabraj.pk/products/white-oud-attar"
+            }
+          },
+          "image_url": "https://www.facebook.com/ads/image/?d=AQIlxFm-5cezlHO5BAT6lDpCgxI_0BR_N-42FoI-VedwMY3_JcJBE5XokMcIAomgTKB11fpEdLAIfMWZpt_4NulREIbrtlKWNoUdP170VOZlYf85shNaUal5p6Qih7WrbGoIeeKHPCsAXXhlwrBjil7K",
+          "image_hash": "0662bc749c58cabbab318b35b93a13a3"
+        }
+      }
+    },
+    "status": "ACTIVE"
+  }
+]

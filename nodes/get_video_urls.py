@@ -1,7 +1,7 @@
 import requests
 import os
 from dotenv import load_dotenv
-from get_ads import get_facebook_ads  # Importing function from get_ads.py
+from nodes.get_ads import get_facebook_ads  # Importing function from get_ads.py
 
 load_dotenv()
 
@@ -33,10 +33,10 @@ def get_video_urls_from_ads():
                 .get("video_data", {})
                 .get("video_id")
             )
-
-            # Skip if no video_id
+            
             if not video_id:
-                continue
+                  print(f"[SKIP] No video ID found for ad_id {ad.get('id')}")
+                  continue
 
             # Call Graph API to get video URL and permalink
             video_url = f"https://graph.facebook.com/v19.0/{video_id}"
@@ -72,3 +72,5 @@ def get_video_urls_from_ads():
     except Exception as e:
         print(f"[ERROR] Unexpected error in video fetching: {e}")
         return {"error": str(e)}
+    
+

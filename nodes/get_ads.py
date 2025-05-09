@@ -1,4 +1,3 @@
-
 import os
 from dotenv import load_dotenv
 import requests
@@ -9,8 +8,6 @@ load_dotenv()
 ACCESS_TOKEN = os.getenv("FB_ACCESS_TOKEN")
 AD_ACCOUNT_ID = os.getenv("FB_AD_ACCOUNT_ID")
 
-## This function fetches Facebook Ads data from the Graph API.
-
 def get_facebook_ads():
     """
     Fetch Facebook Ads data from Graph API.
@@ -19,7 +16,7 @@ def get_facebook_ads():
         dict: A dictionary with raw ad JSON data or error info.
     """
     try:
-        url = f"https://graph.facebook.com/v19.0/{AD_ACCOUNT_ID}/ads"
+        url = f"https://graph.facebook.com/v19.0/act_{AD_ACCOUNT_ID}/ads"
         params = {
             "access_token": ACCESS_TOKEN,
             "fields": ",".join([
@@ -39,10 +36,9 @@ def get_facebook_ads():
 
         data = response.json()
 
-       
+        # Save to file for inspection/debugging
         with open("ads.json", "w") as f:
             json.dump(data.get("data", []), f, indent=2)
- 
 
         print(f"[INFO] Retrieved {len(data.get('data', []))} ads from Meta.")
         return {"ads": data.get("data", [])}
@@ -53,3 +49,5 @@ def get_facebook_ads():
     except Exception as e:
         print(f"[ERROR] Unexpected error occurred: {e}")
         return {"error": str(e)}
+    
+    
