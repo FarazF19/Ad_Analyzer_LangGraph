@@ -29,12 +29,12 @@ def transcribe_video(video_path: Path) -> str:
                 model="whisper-1",
                 file=f,
                 language="ur",
-                prompt="This is a Pakistani Urdu advertisement. Transcribe the spoken content in Urdu script."
+                prompt="This is a Pakistani Urdu advertisement.You may find words like Oud-al-abraj,outlet,purchase,online etc. Transcribe the spoken content in Urdu script."
             )
         return response.text.strip()
 
     except Exception as e:
-        print(f"[❌] Failed to transcribe {video_path.name}: {e}")
+        print(f"Failed to transcribe {video_path.name}: {e}")
         return None
 
 def transcribe_all_videos():
