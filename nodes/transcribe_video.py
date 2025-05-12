@@ -66,13 +66,3 @@ def transcribe_all_videos():
 
     return results
 
-# Run and show one sample
-if __name__ == "__main__":
-    transcribed_results = transcribe_all_videos()
-
-    if transcribed_results:
-        print("\n🧪 Sample Transcription Output:")
-        print(f"File: {transcribed_results[0]['file']}")
-        print(f"Text: {transcribed_results[0]['text'][:500]}...")  # Preview first 500 chars
-    else:
-        print("[ℹ️] No new videos transcribed.")
