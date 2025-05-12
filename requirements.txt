@@ -16,3 +16,5 @@ numpy
 langchain_openai
 chromadb
 onnxruntime
+pymongo
+urduhack
