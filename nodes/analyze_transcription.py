@@ -3,7 +3,6 @@ from openai import OpenAI
 from pathlib import Path
 import os
 from typing import Dict, Any
-import json
 
 # Load API key
 load_dotenv()
@@ -18,12 +17,7 @@ ANALYSIS_DIR.mkdir(parents=True, exist_ok=True)
 def analyze_transcript_text(text: str) -> str:
     """
     Sends transcription text to GPT for structured analysis (e.g. tone, hook, CTA).
-    
-    Args:
-        text (str): Urdu transcription text.
-    
-    Returns:
-        str: JSON-like string analysis or plain response.
+    Returns a clean bullet list string.
     """
     prompt = f"""
 Aap aik marketing strategist hain jo aik ad ki Urdu transcript ka jaiza le rahe hain. Aapko yeh batana hai ke is ad mein kon kon se selling techniques use hui hain. Jaise ke:
@@ -41,12 +35,12 @@ Transcript:
 {text}
 """
 
-    system_prompt = "You are a helpful assistant that gives only keywords as a return without markdown, in English. Be straight to the point."
+    system_prompt = "You are a helpful assistant that gives only keywords as a return, in English, with one point per line using dashes. Do not include markdown or JSON."
 
     try:
         response = client.chat.completions.create(
-            model="gpt-4",
-             messages=[
+            model="gpt-4o",
+            messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt}
             ],
@@ -60,13 +54,7 @@ Transcript:
 def analyze_all_transcriptions(state: Dict[str, Any]) -> Dict[str, Any]:
     """
     LangGraph-compatible node that analyzes each transcription in state["transcriptions"]
-    and saves structured analysis as JSON in transcription_analysis/ folder.
-    
-    Args:
-        state (dict): Current LangGraph state, expects 'transcriptions' key.
-    
-    Returns:
-        dict: Updated state with 'transcription_analysis' key added.
+    and saves analysis as plain .txt file (one per transcription).
     """
     results = []
     transcriptions = state.get("transcriptions", [])
@@ -84,35 +72,27 @@ def analyze_all_transcriptions(state: Dict[str, Any]) -> Dict[str, Any]:
             print(f"[⚠️] Missing data in item: {item}")
             continue
 
-        analysis_path = ANALYSIS_DIR / f"{Path(filename).stem}.json"
+        analysis_path = ANALYSIS_DIR / f"{Path(filename).stem}_analysis.txt"
         if analysis_path.exists():
             print(f"[⏩] Skipping {filename} (already analyzed)")
             with open(analysis_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                results.append({
-                    "file": filename,
-                    "analysis": data
-                })
+                analysis = f.read()
+            results.append({
+                "file": filename,
+                "analysis": analysis
+            })
             continue
 
         print(f"[🧠] Analyzing transcription: {filename}")
         analysis_text = analyze_transcript_text(text)
 
         if analysis_text:
-            try:
-                # Try to parse analysis as JSON
-                parsed = json.loads(analysis_text)
-            except json.JSONDecodeError:
-                # Fallback: Save raw string
-                parsed = {"raw": analysis_text}
-
             with open(analysis_path, "w", encoding="utf-8") as f:
-                json.dump(parsed, f, ensure_ascii=False, indent=2)
-
+                f.write(analysis_text)
             print(f"[✅] Saved analysis: {analysis_path}")
             results.append({
                 "file": filename,
-                "analysis": parsed
+                "analysis": analysis_text
             })
 
     state["transcription_analysis"] = results
