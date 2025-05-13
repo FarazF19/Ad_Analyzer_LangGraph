@@ -58,8 +58,8 @@ def build_graph():
 
     return builder.compile()
 
-# ---- Run the Graph ----
-if __name__ == "__main__":
+# ---- Run the Graph (to be called from main.py) ----
+def run_ad_analysis_graph():
     print("[🚀] Starting Ad Analysis Graph...")
     graph = build_graph()
 
