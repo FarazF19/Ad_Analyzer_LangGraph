@@ -1,44 +1,44 @@
 import requests
 import os
 from dotenv import load_dotenv
-from nodes.get_ads import get_facebook_ads  # Importing function from get_ads.py
+from nodes.get_ads import get_facebook_ads  # This should now return state with "ads" key
 
 load_dotenv()
 
 ACCESS_TOKEN = os.getenv("FB_ACCESS_TOKEN")
 
-def get_video_urls_from_ads():
+def get_video_urls_from_ads(state: dict) -> dict:
     """
-    Fetches all video URLs (source + permalink) for ads that contain video creatives.
+    Extracts video URLs for each ad with a video creative.
+
+    Args:
+        state (dict): Current LangGraph state, should include "ads".
 
     Returns:
-        list[dict]: Each dict contains video_id, source, and permalink_url.
+        dict: Updated state with video URL info.
     """
     try:
-        # Get all Facebook ads
-        ads_result = get_facebook_ads()
-
-        if "error" in ads_result:
-            return {"error": "Failed to fetch ads: " + ads_result["error"]}
+        ads = state.get("ads", [])
+        if not ads:
+            print("[⚠️] No ads found in state. Cannot extract video URLs.")
+            state["video_urls"] = []
+            return state
 
         video_urls = []
 
-        # Extract video_id from each ad
-        for ad in ads_result.get("ads", []):
+        for ad in ads:
             creative = ad.get("creative", {})
-            # Extract video_id from nested path
             video_id = (
                 creative
                 .get("object_story_spec", {})
                 .get("video_data", {})
                 .get("video_id")
             )
-            
-            if not video_id:
-                  print(f"[SKIP] No video ID found for ad_id {ad.get('id')}")
-                  continue
 
-            # Call Graph API to get video URL and permalink
+            if not video_id:
+                print(f"[SKIP] No video ID found for ad_id {ad.get('id')}")
+                continue
+
             video_url = f"https://graph.facebook.com/v19.0/{video_id}"
             params = {
                 "access_token": ACCESS_TOKEN,
@@ -51,9 +51,9 @@ def get_video_urls_from_ads():
                 data = response.json()
 
                 video_info = {
-                    "ad_id": ad.get("id"),        # Ad ID for reference- can be skipped
-                    "video_id": video_id,         # Video ID- can be skipped
-                    "source": data.get("source"),    # Video source URL-important
+                    "ad_id": ad.get("id"),
+                    "video_id": video_id,
+                    "source": data.get("source"),
                     "permalink_url": data.get("permalink_url")
                 }
 
@@ -66,11 +66,11 @@ def get_video_urls_from_ads():
                     "error": str(e)
                 })
 
-        print(f"[INFO] Found video URLs for {len(video_urls)} videos.")
-        return {"videos": video_urls}
+        print(f"[🔗] Found video URLs for {len(video_urls)} ads.")
+        state["video_urls"] = video_urls
+        return state
 
     except Exception as e:
-        print(f"[ERROR] Unexpected error in video fetching: {e}")
-        return {"error": str(e)}
-    
-
+        print(f"[❌] Unexpected error in get_video_urls_from_ads: {e}")
+        state["error"] = str(e)
+        return state

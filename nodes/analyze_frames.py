@@ -4,8 +4,9 @@ import base64
 import json
 import os
 from dotenv import load_dotenv
+from typing import Dict, Any
 
-# Load API key
+# Load API Key
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
@@ -23,10 +24,28 @@ ANALYSIS_PROMPT = (
 )
 
 def encode_image_to_base64(image_path: Path) -> str:
+    """
+    Converts an image to a base64 encoded string.
+
+    Args:
+        image_path (Path): Path to the image file.
+
+    Returns:
+        str: Base64 encoded string of the image.
+    """
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
 
 def analyze_frame(image_path: Path) -> str:
+    """
+    Analyzes a single frame using GPT-4o and returns the analysis result.
+
+    Args:
+        image_path (Path): Path to the image file to analyze.
+
+    Returns:
+        str: Analysis result for the image.
+    """
     image_b64 = encode_image_to_base64(image_path)
     try:
         response = client.chat.completions.create(
@@ -47,31 +66,59 @@ def analyze_frame(image_path: Path) -> str:
         print(f"[❌] Error analyzing {image_path.name}: {e}")
         return "Error"
 
-def analyze_all_frames():
+def analyze_all_frames(state: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Analyzes all frame images in subfolders of extracted_frames/
-    and saves a JSON file per video in frame_analysis/.
+    LangGraph-compatible node to analyze all frames in extracted_frames/
+    and skip videos that already have frame analysis.
     """
-    if not FRAMES_DIR.exists():
-        print("[⚠️] extracted_frames directory does not exist.")
-        return
+    frame_analysis_results = []
 
-    for video_folder in FRAMES_DIR.iterdir():
-        if not video_folder.is_dir():
-            continue  # Skip anything that's not a subfolder
+    downloaded_videos = state.get("downloaded_videos", [])
+    if not downloaded_videos:
+        print("[⚠️] No video files found in state. Skipping frame analysis.")
+        state["frame_analysis"] = []
+        return state
 
-        video_id = video_folder.name
-        print(f"[🎞️] Analyzing frames for: {video_id}")
+    video_folders = [Path(v).stem for v in downloaded_videos]
 
+    for folder_name in video_folders:
+        video_folder_path = FRAMES_DIR / folder_name
+        output_path = ANALYSIS_DIR / f"{folder_name}_analysis.json"
+
+        # ✅ Skip if analysis file already exists
+        if output_path.exists():
+            print(f"[⏩] Skipping {folder_name} — already analyzed.")
+            with open(output_path, "r", encoding="utf-8") as f:
+                existing_analysis = json.load(f)
+            frame_analysis_results.append({
+                "video": folder_name,
+                "analysis": existing_analysis
+            })
+            continue
+
+        if not video_folder_path.exists():
+            print(f"[⚠️] Folder not found for {folder_name}: {video_folder_path}")
+            continue
+
+        print(f"[🎞️] Analyzing frames for: {folder_name}")
         analysis = {}
-        for frame_path in sorted(video_folder.glob("*.jpg")):
+
+        for frame_path in sorted(video_folder_path.glob("*.jpg")):
             print(f"[🧠] Analyzing: {frame_path.name}")
             result = analyze_frame(frame_path)
             analysis[frame_path.name] = result
 
-        # Save analysis for this video
-        output_path = ANALYSIS_DIR / f"{video_id}_analysis.json"
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(analysis, f, indent=2, ensure_ascii=False)
-        print(f"[✅] Saved: {output_path}")
+
+        print(f"[✅] Saved: {output_path.name}")
+        frame_analysis_results.append({
+            "video": folder_name,
+            "analysis": analysis
+        })
+
+    state["frame_analysis"] = frame_analysis_results
+    return state
+
+
 

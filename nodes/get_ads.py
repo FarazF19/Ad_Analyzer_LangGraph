@@ -8,12 +8,15 @@ load_dotenv()
 ACCESS_TOKEN = os.getenv("FB_ACCESS_TOKEN")
 AD_ACCOUNT_ID = os.getenv("FB_AD_ACCOUNT_ID")
 
-def get_facebook_ads():
+def get_facebook_ads(state: dict) -> dict:
     """
-    Fetch Facebook Ads data from Graph API.
+    Fetch Facebook Ads data from Graph API and store it in the graph state.
+
+    Args:
+        state (dict): The current state of the graph.
 
     Returns:
-        dict: A dictionary with raw ad JSON data or error info.
+        dict: Updated graph state including raw ad data.
     """
     try:
         url = f"https://graph.facebook.com/v19.0/act_{AD_ACCOUNT_ID}/ads"
@@ -32,22 +35,31 @@ def get_facebook_ads():
         }
 
         response = requests.get(url, params=params)
-        response.raise_for_status()  # Raise if 4xx or 5xx
+        response.raise_for_status()
 
         data = response.json()
+        ads_data = data.get("data", [])
 
-        # Save to file for inspection/debugging
+        # Save to file for debugging
         with open("ads.json", "w") as f:
-            json.dump(data.get("data", []), f, indent=2)
+            json.dump(ads_data, f, indent=2)
 
-        print(f"[INFO] Retrieved {len(data.get('data', []))} ads from Meta.")
-        return {"ads": data.get("data", [])}
+        print(f"[📥] Retrieved {len(ads_data)} ads from Meta.")
+
+        # Update state - store the ads in a list (this will be accumulated in the graph state)
+        if "ads" in state:
+            state["ads"].extend(ads_data)  # Accumulate the ads into the list
+        else:
+            state["ads"] = ads_data  # Initialize the list with the first set of ads
+
+        return state
 
     except requests.exceptions.RequestException as e:
-        print(f"[ERROR] Request to Facebook Ads API failed: {e}")
-        return {"error": str(e)}
+        print(f"[❌] Request to Facebook Ads API failed: {e}")
+        state["error"] = str(e)
+        return state
+
     except Exception as e:
-        print(f"[ERROR] Unexpected error occurred: {e}")
-        return {"error": str(e)}
-    
-    
+        print(f"[❌] Unexpected error occurred: {e}")
+        state["error"] = str(e)
+        return state

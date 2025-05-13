@@ -1,27 +1,31 @@
+from dotenv import load_dotenv
 from openai import OpenAI
 from pathlib import Path
-from dotenv import load_dotenv
 import os
+from typing import Dict, Any
+import json
 
-# Load API Key
+# Load API key
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# Directories
+# Resolve project directories
 ROOT_DIR = Path(__file__).resolve().parent.parent
 TRANSCRIPT_DIR = ROOT_DIR / "transcriptions"
 ANALYSIS_DIR = ROOT_DIR / "transcription_analysis"
 ANALYSIS_DIR.mkdir(parents=True, exist_ok=True)
 
-def analyze_transcription(transcript_text: str, filename: str) -> str:
+def analyze_transcript_text(text: str) -> str:
     """
-    Uses GPT-4o to analyze a transcription based on Urdu marketing strategy prompt.
-
+    Sends transcription text to GPT for structured analysis (e.g. tone, hook, CTA).
+    
+    Args:
+        text (str): Urdu transcription text.
+    
     Returns:
-        str: Analysis result
+        str: JSON-like string analysis or plain response.
     """
-    try:
-        user_prompt = f"""
+    prompt = f"""
 Aap aik marketing strategist hain jo aik ad ki Urdu transcript ka jaiza le rahe hain. Aapko yeh batana hai ke is ad mein kon kon se selling techniques use hui hain. Jaise ke:
 
 - Emotional kahani sunana
@@ -34,49 +38,82 @@ Aap aik marketing strategist hain jo aik ad ki Urdu transcript ka jaiza le rahe 
 Bullets mein jawaab dein — sirf unhi cheezon ka zikr karein jo is transcript mein hain.
 
 Transcript:
-{transcript_text}
+{text}
 """
 
-        system_prompt = "You are a helpful assistant that gives only keywords as a return without markdown, in English. Be straight to the point."
+    system_prompt = "You are a helpful assistant that gives only keywords as a return without markdown, in English. Be straight to the point."
 
+    try:
         response = client.chat.completions.create(
-            model="gpt-4o",
-            messages=[
+            model="gpt-4",
+             messages=[
                 {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt}
+                {"role": "user", "content": prompt}
             ],
-            temperature=0.3
+            temperature=0.5
         )
-
         return response.choices[0].message.content.strip()
-
     except Exception as e:
-        print(f"[❌] Failed to analyze {filename}: {e}")
+        print(f"❌ Error analyzing transcription: {e}")
         return None
 
-def analyze_all_transcriptions():
+def analyze_all_transcriptions(state: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Analyzes all `.txt` files in the transcriptions/ folder and saves results in analysis/ folder.
+    LangGraph-compatible node that analyzes each transcription in state["transcriptions"]
+    and saves structured analysis as JSON in transcription_analysis/ folder.
+    
+    Args:
+        state (dict): Current LangGraph state, expects 'transcriptions' key.
+    
+    Returns:
+        dict: Updated state with 'transcription_analysis' key added.
     """
-    for file in TRANSCRIPT_DIR.glob("*.txt"):
-        analysis_path = ANALYSIS_DIR / f"{file.stem}_analysis.txt"
+    results = []
+    transcriptions = state.get("transcriptions", [])
 
-        if analysis_path.exists():
-            print(f"[⏩] Skipping analysis (already exists): {analysis_path.name}")
+    if not transcriptions:
+        print("[⚠️] No transcriptions found in state. Skipping analysis.")
+        state["transcription_analysis"] = []
+        return state
+
+    for item in transcriptions:
+        filename = item.get("file")
+        text = item.get("text")
+
+        if not filename or not text:
+            print(f"[⚠️] Missing data in item: {item}")
             continue
 
-        try:
-            with open(file, "r", encoding="utf-8") as f:
-                transcript_text = f.read()
+        analysis_path = ANALYSIS_DIR / f"{Path(filename).stem}.json"
+        if analysis_path.exists():
+            print(f"[⏩] Skipping {filename} (already analyzed)")
+            with open(analysis_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                results.append({
+                    "file": filename,
+                    "analysis": data
+                })
+            continue
 
-            print(f"[🔍] Analyzing: {file.name}")
-            analysis = analyze_transcription(transcript_text, file.name)
+        print(f"[🧠] Analyzing transcription: {filename}")
+        analysis_text = analyze_transcript_text(text)
 
-            if analysis:
-                with open(analysis_path, "w", encoding="utf-8") as out_file:
-                    out_file.write(analysis)
-                print(f"[✅] Saved: {analysis_path.name}")
-        except Exception as e:
-            print(f"[❌] Error with file {file.name}: {e}")
+        if analysis_text:
+            try:
+                # Try to parse analysis as JSON
+                parsed = json.loads(analysis_text)
+            except json.JSONDecodeError:
+                # Fallback: Save raw string
+                parsed = {"raw": analysis_text}
 
+            with open(analysis_path, "w", encoding="utf-8") as f:
+                json.dump(parsed, f, ensure_ascii=False, indent=2)
 
+            print(f"[✅] Saved analysis: {analysis_path}")
+            results.append({
+                "file": filename,
+                "analysis": parsed
+            })
+
+    state["transcription_analysis"] = results
+    return state

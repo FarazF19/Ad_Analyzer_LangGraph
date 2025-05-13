@@ -1,51 +1,64 @@
 import os
 import requests
-import uuid
 from pathlib import Path
-from typing import List, Dict
+from typing import Dict, Any
 
-# Create a temp directory for storing videos
+# Temp directory to store downloaded videos
 TMP_DIR = Path("tmp_videos")
 TMP_DIR.mkdir(exist_ok=True)
 
+def is_valid_mp4(file_path: Path) -> bool:
+    """Check if the file exists and is a non-zero MP4 file."""
+    return file_path.exists() and file_path.stat().st_size > 0 and file_path.suffix == ".mp4"
 
-def download_videos(video_list: List[Dict[str, str]]) -> List[str]:
+def download_videos(state: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Downloads videos from a list of Facebook video metadata.
+    Downloads Facebook ad videos only if not already cached.
     
     Args:
-        video_list (List[Dict]): Each dict should have 'video_id' and 'source' (download URL).
-    
+        state (dict): LangGraph state, must include 'video_urls'.
+
     Returns:
-        List[str]: Paths to the saved video files.
+        dict: Updated state with 'video_paths'.
     """
+    video_list = state.get("video_urls", [])
     saved_paths = []
+
+    if not video_list:
+        print("[⚠️] No video URLs in state. Skipping download.")
+        state["video_paths"] = []
+        return state
 
     for video in video_list:
         video_id = video.get("video_id")
         source_url = video.get("source")
 
-        if not source_url:
-            print(f"[WARNING] Skipping video_id={video_id} - No source URL provided.")
+        if not video_id or not source_url:
+            print(f"[SKIP] Missing data: video_id={video_id}, source_url={source_url}")
             continue
 
+        filename = TMP_DIR / f"video_{video_id}.mp4"
+
+        # --- Skip if already downloaded ---
+        if is_valid_mp4(filename):
+            print(f"[✅] Cached: {filename}")
+            saved_paths.append(str(filename))
+            continue
+
+        # --- Download if not cached ---
         try:
-            # Send GET request to the video source URL with streaming enabled
-            response = requests.get(source_url, stream=True, timeout=15)
-            response.raise_for_status()  # Raise error for bad HTTP responses
+            response = requests.get(source_url, stream=True, timeout=20)
+            response.raise_for_status()
 
-            # Create a unique filename using video_id and a short UUID
-            filename = TMP_DIR / f"video_{video_id}_{uuid.uuid4().hex[:6]}.mp4"
-
-            # Open file in binary write mode and save the video in chunks
             with open(filename, "wb") as f:
                 for chunk in response.iter_content(chunk_size=8192):
                     f.write(chunk)
 
-            print(f"[INFO] Successfully downloaded: {filename}")
+            print(f"[💾] Downloaded: {filename}")
             saved_paths.append(str(filename))
 
         except requests.exceptions.RequestException as e:
-            print(f"[ERROR] Failed to download video_id={video_id}: {e}")
+            print(f"[❌] Failed to download video_id={video_id}: {e}")
 
-    return saved_paths
+    state["downloaded_videos"] = saved_paths
+    return state

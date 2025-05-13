@@ -4,16 +4,20 @@ from dotenv import load_dotenv
 import os
 import json
 import re
+from typing import Dict, Any
 
+# Load API Key
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+# Define directories
 ROOT_DIR = Path(__file__).resolve().parent.parent
 TRANSCRIPTION_DIR = ROOT_DIR / "transcription_analysis"
 FRAME_ANALYSIS_DIR = ROOT_DIR / "frame_analysis"
 AD_ANALYSIS_DIR = ROOT_DIR / "ad_analysis"
 AD_ANALYSIS_DIR.mkdir(parents=True, exist_ok=True)
 
+# Ad analysis prompt
 AD_ANALYSIS_PROMPT = (
     "STEP 1: Analyze the ad insights below.\n\n"
     "Ad Transcript Summary: {transcription}\n"
@@ -28,80 +32,134 @@ AD_ANALYSIS_PROMPT = (
     '{{\n  "hook":"...",\n  "tone":"...",\n  "power_phrases":"...",\n  "visual":"..."\n}}'
 )
 
+def clean_response_to_json(text: str) -> str:
+    """
+    Cleans malformed OpenAI JSON by:
+    - Removing line breaks inside strings
+    - Stripping trailing commas
+    - Closing any missing braces
+    """
+    # Remove leading/trailing whitespace and rogue newlines
+    text = text.strip()
 
-def extract_json(content):
-    """Cleans and extracts JSON from OpenAI response using regex."""
-    try:
-        # Remove surrounding code blocks
-        content = re.sub(r"^```json|```$", "", content.strip(), flags=re.MULTILINE)
+    # Remove newlines within quotes (causes JSONDecodeError)
+    def fix_linebreaks_in_strings(text: str) -> str:
+        fixed_lines = []
+        in_string = False
+        current_string = ""
+        for line in text.splitlines():
+            if '"' in line:
+                quote_count = line.count('"')
+                if quote_count % 2 != 0:
+                    in_string = not in_string
+                if in_string:
+                    current_string += line.strip()
+                else:
+                    current_string += line.strip()
+                    fixed_lines.append(current_string)
+                    current_string = ""
+            else:
+                if in_string:
+                    current_string += line.strip()
+                else:
+                    fixed_lines.append(line)
+        return "\n".join(fixed_lines)
 
-        # Collapse multi-line strings (e.g., line breaks inside values)
-        content = re.sub(r"\n\s+", " ", content)
+    text = fix_linebreaks_in_strings(text)
+    text = re.sub(r",\s*}", "}", text)
+    text = re.sub(r",\s*]", "]", text)
 
-        # Remove trailing commas if any (often breaks strict JSON parsing)
-        content = re.sub(r",\s*}", "}", content)
-        content = re.sub(r",\s*]", "]", content)
+    # Ensure braces are balanced
+    open_braces = text.count("{")
+    close_braces = text.count("}")
+    if close_braces < open_braces:
+        text += "}" * (open_braces - close_braces)
 
-        return json.loads(content)
-    except json.JSONDecodeError as e:
-        print(f"[⚠️] JSONDecodeError: {e}")
-        return None
+    return text
 
-def analyze_ad(video_id, transcription, visual_summary):
+
+def analyze_combined_ad(transcription: str, visual_summary: str) -> Dict[str, str]:
     prompt = AD_ANALYSIS_PROMPT.format(
-        transcription=transcription.strip(),
-        visual_summary=visual_summary.strip()
+        transcription=transcription,
+        visual_summary=visual_summary
     )
-
     try:
         response = client.chat.completions.create(
             model="gpt-4o",
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=300
+            messages=[
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.4
         )
-        content = response.choices[0].message.content.strip()
+        text = response.choices[0].message.content
 
-        if not content:
+        if not text:
             raise ValueError("Empty response from OpenAI")
 
-        result = extract_json(content)
-        if result:
-            return result
-        else:
-            print(f"[⚠️] Failed to extract JSON from response:\n{content}")
-            return None
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError:
+            print("[⚠️] Raw OpenAI response was not valid JSON. Attempting cleanup...")
+            cleaned = clean_response_to_json(text)
+            try:
+                return json.loads(cleaned)
+            except json.JSONDecodeError:
+                print("[❌] Final fallback failed. Response could not be parsed.")
+                print("⛔ RAW Response:\n", text)
+                return {}
 
     except Exception as e:
-        print(f"[❌] Error analyzing ad for {video_id}: {e}")
-        return None
+        print(f"[❌] Error during final ad analysis: {e}")
+        return {}
 
-def process_all_ads():
-    for txt_path in TRANSCRIPTION_DIR.glob("*.txt"):
-        full_id = txt_path.stem  # e.g., video_906752448323827_f903ac_analysis
-        print(f"[🎯] Processing final ad analysis for: {full_id}")
+def final_ad_analysis(state: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    LangGraph-compatible node that merges transcription and frame insights
+    into a final ad report, handling AllowMultiple inputs.
+    """
+    transcription_results = state.get("transcription_analysis", [])
+    frame_results = state.get("frame_analysis", [])
 
-        # Get base video ID without "_analysis"
-        video_id = full_id.replace("_analysis", "")
+    if not transcription_results or not frame_results:
+        print("[⚠️] Missing analysis input(s) — skipping final ad analysis.")
+        return {"final_ad_analysis": []}
 
-        json_path = FRAME_ANALYSIS_DIR / f"{video_id}_analysis.json"
-        if not json_path.exists():
-            print(f"[⚠️] Frame analysis not found for {video_id}")
+    combined_results = []
+
+    for transcript in transcription_results:
+        video_name = Path(transcript.get("file", "")).stem
+        transcript_text = transcript.get("analysis", "")
+
+        if not video_name or not transcript_text:
+            print(f"[⚠️] Invalid transcription entry: {transcript}")
             continue
 
-        try:
-            transcription = txt_path.read_text(encoding="utf-8")
-            visual_data = json.loads(json_path.read_text(encoding="utf-8"))
-            visual_summary = "\n".join(visual_data.values())
+        # Match frame analysis by video name
+        matching_frame = next(
+            (item for item in frame_results if Path(item.get("video", "")).stem == video_name),
+            None
+        )
 
-            result = analyze_ad(video_id, transcription, visual_summary)
-            if result:
-                output_path = AD_ANALYSIS_DIR / f"{video_id}_final.json"
-                with open(output_path, "w", encoding="utf-8") as f:
-                    json.dump(result, f, indent=2, ensure_ascii=False)
-                print(f"[✅] Saved final analysis for {video_id}")
-            else:
-                print(f"[❌] Skipping saving for {video_id}, result invalid.")
-        except Exception as e:
-            print(f"[❌] Unexpected error for {video_id}: {e}")
+        if not matching_frame:
+            print(f"[⚠️] No frame analysis found for {video_name}")
+            continue
 
+        visual_text = " | ".join(matching_frame.get("analysis", {}).values())
 
+        print(f"[🧠] Running final analysis for: {video_name}")
+        summary_json = analyze_combined_ad(transcript_text, visual_text)
+
+        if summary_json:
+            output_path = AD_ANALYSIS_DIR / f"{video_name}_final.json"
+            with open(output_path, "w", encoding="utf-8") as f:
+                json.dump(summary_json, f, indent=2, ensure_ascii=False)
+            print(f"[✅] Final summary saved: {output_path.name}")
+
+            combined_results.append({
+                "video": video_name,
+                "final_analysis": summary_json
+            })
+        else:
+            print(f"[❌] Could not produce summary for {video_name}")
+
+    return {"final_ad_analysis": combined_results}

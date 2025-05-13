@@ -1,6 +1,7 @@
 import cv2
 import base64
 from pathlib import Path
+from typing import Dict, Any
 
 # Define paths
 ROOT_DIR = Path(__file__).resolve().parent.parent
@@ -9,6 +10,7 @@ FRAMES_DIR = ROOT_DIR / "extracted_frames"
 FRAMES_DIR.mkdir(parents=True, exist_ok=True)
 
 def convert_frame_to_base64(frame):
+    """Converts an OpenCV frame to Base64-encoded string."""
     ret, buffer = cv2.imencode('.jpg', frame)
     if not ret:
         return None
@@ -18,13 +20,6 @@ def extract_evenly_distributed_frames_from_video(video_path: Path, max_frames: i
     """
     Extracts up to `max_frames` evenly distributed frames from a video.
     Returns a list of Base64-encoded JPEG images.
-
-    Args:
-        video_path (Path): Path to the video file.
-        max_frames (int): Max number of frames to extract.
-
-    Returns:
-        list[str]: Base64-encoded frames.
     """
     capture = cv2.VideoCapture(str(video_path))
     total_frames = int(capture.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -36,8 +31,12 @@ def extract_evenly_distributed_frames_from_video(video_path: Path, max_frames: i
     step = max(1, total_frames // max_frames)
     base64_frames = []
 
-    # Create a unique output folder for this video
     output_dir = FRAMES_DIR / video_path.stem
+
+    if output_dir.exists() and any(output_dir.glob("*.jpg")):
+        print(f"[✔️] Frames already extracted for {video_path.name}, skipping.")
+        return []
+
     output_dir.mkdir(parents=True, exist_ok=True)
 
     for i in range(0, total_frames, step):
@@ -45,11 +44,9 @@ def extract_evenly_distributed_frames_from_video(video_path: Path, max_frames: i
         ret, frame = capture.read()
 
         if ret:
-            # Save the frame as an image file (optional)
             frame_path = output_dir / f"frame_{len(base64_frames) + 1}.jpg"
             cv2.imwrite(str(frame_path), frame)
 
-            # Convert to base64
             frame_b64 = convert_frame_to_base64(frame)
             base64_frames.append(frame_b64)
 
@@ -59,17 +56,22 @@ def extract_evenly_distributed_frames_from_video(video_path: Path, max_frames: i
     capture.release()
     return base64_frames
 
-
-def extract_all_videos_as_base64_frames():
+def extract_all_videos_as_base64_frames(state: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Process all videos in tmp_videos and return base64 frames for each.
-
-    Returns:
-        list[dict]: [{"video": ..., "frames": [...]}, ...]
+    LangGraph-compatible node to extract frames from all videos in tmp_videos directory
+    and return the frames as Base64-encoded strings.
     """
     results = []
+    video_paths = state.get("downloaded_videos", [])
 
-    for video_file in VIDEO_DIR.glob("*.mp4"):
+    if not video_paths:
+        print("[⚠️] No video paths found in state. Skipping frame extraction.")
+        state["extracted_frames"] = []
+        return state
+
+    for video_file in video_paths:
+        video_file = Path(video_file)
+
         print(f"[📽️] Extracting frames from {video_file.name}")
         frames_b64 = extract_evenly_distributed_frames_from_video(video_file)
 
@@ -79,15 +81,5 @@ def extract_all_videos_as_base64_frames():
                 "frames": frames_b64
             })
 
-    return results
-
-
-if __name__ == "__main__":
-    output = extract_all_videos_as_base64_frames()
-
-    if output:
-        print("\n🧪 Sample Output (Base64 Frame Preview):")
-        print(f"Video: {output[0]['video']}")
-        print(f"Frame 1 (base64): {output[0]['frames'][0][:100]}...")
-    else:
-        print("[ℹ️] No frames extracted.")
+    state["extracted_frames"] = results
+    return state

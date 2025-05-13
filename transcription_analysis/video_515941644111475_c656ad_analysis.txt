@@ -1,4 +1,0 @@
-- Social proof (demonstration with another person)
-- Viewer se direct connection ("آپ کے لیے")
-- Risk reversal ("پسند نہ آئے تو پیسے واپس")
-- Urgency ("ابھی 100-200 روپے ڈسکاؤنڈ")

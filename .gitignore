@@ -1,3 +1,5 @@
 venv/
 .env
 extracted_frames/
+tmp_videos/
+transcriptions/
